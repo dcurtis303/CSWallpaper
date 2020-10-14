@@ -1,13 +1,16 @@
 package ca.dcstudios.cswallpaper.main_activity;
 
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import ca.dcstudios.cswallpaper.R;
 import ca.dcstudios.cswallpaper.renderer.GLRenderer;
 import ca.dcstudios.cswallpaper.service.GLWallpaperService;
+import ca.dcstudios.cswallpaper.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
     public static final boolean WANT_DEBUG = GLWallpaperService.WANT_DEBUG;
@@ -30,5 +33,10 @@ public class MainActivity extends AppCompatActivity {
             glSurfaceView.setRenderer(mGLRenderer);
             glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         }
+    }
+
+    public void startSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

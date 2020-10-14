@@ -13,6 +13,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="startSettings"
             android:text="@string/wallpaper_settings" />
 
         <ca.dcstudios.cswallpaper.main_activity.GLSurfaceViewTouch
