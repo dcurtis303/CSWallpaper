@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Character Skin Wallpaper</string>
+    <string name="wallpaper_settings">Wallpaper Settings…</string>
+    <string name="wallpaper">Character Skin Wallpaper</string>
+    <string name="title_activity_settings">Wallpaper Settings</string>
+    <string name="shared_preferences_key">WallpaperSettings</string>
+    <string name="title_activity_list_folders">List Folders</string>
+    <string name="default_skin_file">…</string>
+    <string name="filepreference_parentfolder_text">Parent folder</string>
+    <string name="filepreference_skin_file_title">Choose a skin file…</string>
+    <string name="no_files">no files found</string>
+    <string name="preference_key">dcswpsettings</string>
+    <string name="skin_default">skin_default</string>
+    <string name="skin_file">skin_file</string>
+    <string name="user_hint">hint</string>
+</resources>
