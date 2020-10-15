@@ -288,6 +288,7 @@ public class GLRenderer implements GLSurfaceView.Renderer, GLWallpaperService.To
                     mCamPos[0] = 0f;
                     mCamPos[1] = 2.2f;
                     mCamPos[2] = CAM_DISTANCE;
+                    mTouch_px = 0;
                     calculateMVPMatrix();
                     requestRender();
                 }
