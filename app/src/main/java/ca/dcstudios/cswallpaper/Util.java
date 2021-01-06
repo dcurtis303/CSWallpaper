@@ -1,7 +1,10 @@
 package ca.dcstudios.cswallpaper;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.opengl.GLES20;
+import android.provider.OpenableColumns;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -29,6 +32,28 @@ public class Util {
         }
 
         return body.toString();
+    }
+
+    public static String getFileName(Context context, Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
     }
 
     public static void checkGlError(String tag, String op) {

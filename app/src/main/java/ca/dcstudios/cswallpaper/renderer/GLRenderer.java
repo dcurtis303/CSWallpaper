@@ -71,10 +71,10 @@ public class GLRenderer implements GLSurfaceView.Renderer, GLWallpaperService.To
     private void init() {
         mStaticMeshes.add(MeshFactory.CreateMesh_OBJ(mContext, "world.obj", 1));
 
-        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/model_base", 2));
-        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/anim_backflip", 2));
-        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/anim_pieces", 2));
-        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/anim_dab", 2));
+        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/model_base", 4));
+        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/anim_backflip", 4));
+        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/anim_pieces", 4));
+        mAnimatedMeshes.add(MeshFactory.CreateMesh_Animated(mContext, "anim/anim_dab", 4));
         mAnimatedMeshes.setVisible(mCurrentAnimatedMesh);
 
         mLightManager.add(new float[]{0f, 2.0f, 4.0f}, new float[]{1.0f, 1.0f, 1.0f}, 0.5f, 0.01f);
@@ -90,7 +90,7 @@ public class GLRenderer implements GLSurfaceView.Renderer, GLWallpaperService.To
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        Log.d(TAG, "onSurfaceCreated");
+        Log.d(TAG, "onSurfaceCreated: start");
 
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         GLES20.glFrontFace(GLES20.GL_CCW);
@@ -104,8 +104,11 @@ public class GLRenderer implements GLSurfaceView.Renderer, GLWallpaperService.To
         ShaderManager.init(mContext);
 
         mTextureManager.LoadTextures();
+        mTextureManager.LoadTextureFromFile("none");
 
-        Log.d(TAG, "OpenGL ES initialization complete!");
+        mTextureManager.ListTextures();
+
+        Log.d(TAG, "onSurfaceCreated: OpenGL ES initialization complete!");
     }
 
     @Override
